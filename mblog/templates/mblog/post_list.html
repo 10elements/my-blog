@@ -1,0 +1,13 @@
+{% extends 'mblog/base.html' %}
+{%block content%}
+	{% for post in post %}
+		<div class="post">
+			<div class="date">
+				<p>published: {{ post.published_date }}</p>
+			</div>
+			<h1><a href="{% url 'mblog:post_detail' post_id=post.pk %}">{{ post.title }}</a></h1>
+			<p>{{ post.text|linebreaksbr|truncatewords:20 }}</p>
+			<a href="url 'mblog:post_detail' post_id=post.pk">Comments: {{ post.comments.count }}</a>
+		</div>
+	{% endfor %}
+{%endblock%}

@@ -1,0 +1,11 @@
+{% extends 'mblog/base.html' %}
+
+{% block content %}
+	{% for post in draft_posts %}
+		<div class="post">
+			<p class="data">created: {{ post.created_date|date:'d-m-Y'}}</p>
+			<h1><a href="{% url 'mblog:post_detail' post_id=post.id %}">{{ post.title }}</a></h1>
+			<p>{{ post.text|truncatewords:20}}</p>
+		</div>
+	{% endfor %}
+{% endblock content %}
